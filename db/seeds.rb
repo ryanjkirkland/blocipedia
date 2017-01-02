@@ -14,3 +14,9 @@
   password_confirmation: "password"
   )
 u.confirm
+
+w = Wiki.create(
+  title: "Test Wiki",
+  body: "This is a wiki full of test stuff.",
+  private: false
+  )

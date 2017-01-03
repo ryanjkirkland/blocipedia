@@ -12,6 +12,17 @@ class WikisController < ApplicationController
   end
 
   def create
+    @wiki = Wiki.new
+    @wiki.title = params[:wiki][:title]
+    @wiki.body = params[:wiki][:body]
+
+    if @wiki.save
+      flash[:notice] = "It's lit fam."
+      redirect_to @wiki
+    else
+      flash[:alert] = "This is WRONG"
+      render :new
+    end
   end
 
   def edit

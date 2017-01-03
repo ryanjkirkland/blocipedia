@@ -42,4 +42,13 @@ Rails.application.configure do
   #Set default_url_options for action mailer as requirement for Devise authentication gem
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+  :user_name => ENV["sendgrid_username"],
+  :password => ENV["sendgrid_password"],
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 end

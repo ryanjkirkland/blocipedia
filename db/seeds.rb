@@ -33,6 +33,15 @@ w = Wiki.create(
 end
 user = User.all
 
+10.times do
+  Wiki.create!(
+  title: Faker::Lorem.word,
+  body: Faker::Lorem.paragraph
+  )
+end
+wiki = Wiki.all
+
 
 puts "#{User.count} users created"
+puts "#{Wiki.count} wikis created"
 puts "Seeds finished"

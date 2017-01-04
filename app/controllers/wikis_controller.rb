@@ -1,4 +1,7 @@
 class WikisController < ApplicationController
+
+  before_action :authorize_user, except: [:index, :show, :edit, :update]
+
   def index
     @wikis = Wiki.all
   end
@@ -52,6 +55,13 @@ class WikisController < ApplicationController
     else
       flash[:alert] = "WE CANNOT BE DESTROYED"
       render :show
+    end
+  end
+
+  def authorize_user
+    unless current_user.admin?
+      flash[:alert] = "YOU CAN'T DO THAT"
+      render @wiki
     end
   end
 end

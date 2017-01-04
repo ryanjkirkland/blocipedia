@@ -3,4 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_initialize :init
+
+  def init
+    self.role ||= :member
+  end
+
+  enum role: [:member, :admin]
 end

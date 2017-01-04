@@ -20,3 +20,19 @@ w = Wiki.create(
   body: "This is a wiki full of test stuff.",
   private: false
   )
+
+25.times do
+
+  password = Faker::Internet.password(6, 8)
+
+  User.create!(
+  email: Faker::Internet.email,
+  password: password,
+  password_confirmation: password
+  )
+end
+user = User.all
+
+
+puts "#{User.count} users created"
+puts "Seeds finished"

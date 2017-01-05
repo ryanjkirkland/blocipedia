@@ -13,3 +13,6 @@
 
 sendgrid_username: app61597631@heroku.com
 sendgrid_password: ee7lrnyc2619
+
+STRIPE_SECRET_KEY: sk_test_AGOXd5U5rQKUrkKy8iLQvPV7
+STRIPE_PUBLISHABLE_KEY: pk_test_pPuy3jyI8nJ9POLMBRab5VLY

@@ -23,8 +23,4 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  def upgrade
-    @user.premium!
-  end
 end

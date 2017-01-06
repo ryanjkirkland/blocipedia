@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'charges/create'
+
   resources :wikis
 
   get 'users/new'

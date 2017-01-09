@@ -59,7 +59,7 @@ class WikisController < ApplicationController
   end
 
   def authorize_user
-    unless current_user.admin?
+    unless current_user.admin? || current_user.premium?
       flash[:alert] = "YOU CAN'T DO THAT"
       redirect_to wikis_path
     end

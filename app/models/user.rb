@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   after_initialize :init
 
+  has_many :privatewikis, dependent: :destroy
+
   def init
     self.role ||= :member
   end

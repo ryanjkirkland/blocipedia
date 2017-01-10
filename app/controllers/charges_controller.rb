@@ -33,6 +33,7 @@ class ChargesController < ApplicationController
   def destroy
     flash[:alert] = "YOUR ACCOUNT HAS BEEN DOWNGRADED, YUNG BLOC"
     current_user.member!
+    current_user.wikis.update_all(private: false)
     redirect_to root_path
   end
 end

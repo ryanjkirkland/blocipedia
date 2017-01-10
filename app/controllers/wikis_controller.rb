@@ -37,7 +37,7 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
+    @wiki.body = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(params[:wiki][:body])
     @wiki.private = params[:wiki][:private]
 
     if @wiki.save

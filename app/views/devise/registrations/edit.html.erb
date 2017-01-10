@@ -39,7 +39,7 @@
 <% if current_user.premium? %>
   <h3>I hate being a VIP.</h3>
 
-  <p>I'd like to return to my former life as a total pleb. <%= link_to "Downgrade my account", charge_path(current_user), data: {confirm: "DON'T DO IT" }, method: :delete %></p>
+  <p>I'd like to return to my former life as a total pleb. <%= link_to "Downgrade my account", charge_path(current_user), data: {confirm: "If you downgrade, all private wikis will be made public." }, method: :delete %></p>
 <% else %>
   <h3>Upgrade my account!</h3>
 

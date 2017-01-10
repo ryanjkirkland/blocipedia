@@ -15,12 +15,6 @@
   )
 u.confirm
 
-w = Wiki.create(
-  title: "Test Wiki",
-  body: "This is a wiki full of test stuff.",
-  private: false
-  )
-
 25.times do
 
   password = Faker::Internet.password(6, 8)
@@ -36,7 +30,9 @@ user = User.all
 10.times do
   Wiki.create!(
   title: Faker::Lorem.word,
-  body: Faker::Lorem.paragraph
+  body: Faker::Lorem.paragraph,
+  user_id: user.sample.id,
+  private: false
   )
 end
 wiki = Wiki.all

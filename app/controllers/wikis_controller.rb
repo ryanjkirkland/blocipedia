@@ -3,7 +3,7 @@ class WikisController < ApplicationController
   before_action :authorize_user, except: [:index, :show, :edit, :update, :new, :create]
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -18,6 +18,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.user_id = current_user.id
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "It's lit fam."
@@ -36,6 +38,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "Ya update was saved, bruh."
